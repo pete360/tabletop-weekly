@@ -249,6 +249,63 @@
     font-size: .9rem;
   }
 
+
+  .toc-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .65rem 1rem;
+    margin-bottom: .6rem;
+  }
+  .toc-head h2 { margin: 0; }
+  .sort-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--surface2);
+  }
+  .sort-toggle button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 600;
+    padding: .5rem .85rem;
+    min-height: 44px;
+    cursor: pointer;
+    line-height: 1.2;
+  }
+  .sort-toggle button + button {
+    border-left: 1px solid var(--border);
+  }
+  .sort-toggle button[aria-pressed="true"] {
+    background: var(--accent);
+    color: #0b1220;
+  }
+  .sort-toggle button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    z-index: 1;
+  }
+  .sort-label {
+    color: var(--muted);
+    font-size: .78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-right: .35rem;
+    align-self: center;
+  }
+  .sort-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .35rem .5rem;
+  }
 </style>
 </head>
 <body>
@@ -274,31 +331,41 @@
   </header>
 
   <nav class="toc" aria-label="Table of contents">
-    <h2>Jump to</h2>
+        <div class="toc-head">
+      <h2>Jump to</h2>
+      <div class="sort-wrap" role="group" aria-label="Sort game sections">
+        <span class="sort-label">Sort</span>
+        <div class="sort-toggle">
+          <button type="button" data-sort="newest" aria-pressed="true">Newest first</button>
+          <button type="button" data-sort="az" aria-pressed="false">A–Z</button>
+        </div>
+      </div>
+    </div>
+
     <ul>
-      <li><a href="#captains-chair">Star Trek: Captain's Chair <span class="count">(3)</span></a></li>
-      <li><a href="#blood-rage">Blood Rage <span class="count">(3)</span></a></li>
-      <li><a href="#lotr-fate">LOTR: Fate of the Fellowship <span class="count">(2)</span></a></li>
-      <li><a href="#marvel-champions">Marvel Champions <span class="count">(3)</span></a></li>
-      <li><a href="#dice-throne">Dice Throne <span class="count">(3)</span></a></li>
-      <li><a href="#battlelore">BattleLore <span class="count">(3)</span></a></li>
-      <li><a href="#imperial-assault">Star Wars: Imperial Assault <span class="count">(3)</span></a></li>
-      <li><a href="#outer-rim">Star Wars: Outer Rim <span class="count">(2)</span></a></li>
-      <li><a href="#sw-rebellion">Star Wars: Rebellion <span class="count">(3)</span></a></li>
-      <li><a href="#lotr-journeys">LOTR: Journeys in Middle-earth <span class="count">(2)</span></a></li>
-      <li><a href="#dune-imperium">Dune Imperium <span class="count">(2)</span></a></li>
-      <li><a href="#lotr-duel">LOTR: Duel for Middle-earth <span class="count">(3)</span></a></li>
-      <li><a href="#dc-legendary">DC Legendary <span class="count">(1)</span></a></li>
-      <li><a href="#starcraft-tmg">StarCraft Miniatures Game <span class="count">(2)</span></a></li>
-      <li><a href="#king-of-tokyo">King of Tokyo <span class="count">(3)</span></a></li>
-      <li><a href="#ascendancy">Star Trek Ascendancy: Final Frontier <span class="count">(3)</span></a></li>
-      <li><a href="#sw-deckbuilding">Star Wars: Deckbuilding Game <span class="count">(3)</span></a></li>
-      <li><a href="#marvel-legendary">Marvel Legendary <span class="count">(2)</span></a></li>
+      <li data-game-name="Star Trek: Captain&#x27;s Chair" data-newest-date="2026-10-03" data-default-order="0"><a href="#captains-chair" data-game-name="Star Trek: Captain&#x27;s Chair" data-newest-date="2026-10-03" data-default-order="0">Star Trek: Captain's Chair <span class="count">(3)</span></a></li>
+      <li data-game-name="Blood Rage" data-newest-date="2026-10-02" data-default-order="1"><a href="#blood-rage" data-game-name="Blood Rage" data-newest-date="2026-10-02" data-default-order="1">Blood Rage <span class="count">(3)</span></a></li>
+      <li data-game-name="The Lord of the Rings: Fate of the Fellowship" data-newest-date="2026-03-18" data-default-order="2"><a href="#lotr-fate" data-game-name="The Lord of the Rings: Fate of the Fellowship" data-newest-date="2026-03-18" data-default-order="2">LOTR: Fate of the Fellowship <span class="count">(2)</span></a></li>
+      <li data-game-name="Marvel Champions" data-newest-date="2026-08-27" data-default-order="3"><a href="#marvel-champions" data-game-name="Marvel Champions" data-newest-date="2026-08-27" data-default-order="3">Marvel Champions <span class="count">(3)</span></a></li>
+      <li data-game-name="Dice Throne" data-newest-date="2026-09-30" data-default-order="4"><a href="#dice-throne" data-game-name="Dice Throne" data-newest-date="2026-09-30" data-default-order="4">Dice Throne <span class="count">(3)</span></a></li>
+      <li data-game-name="BattleLore" data-newest-date="2026-10-02" data-default-order="5"><a href="#battlelore" data-game-name="BattleLore" data-newest-date="2026-10-02" data-default-order="5">BattleLore <span class="count">(3)</span></a></li>
+      <li data-game-name="Star Wars: Imperial Assault" data-newest-date="2026-10-02" data-default-order="6"><a href="#imperial-assault" data-game-name="Star Wars: Imperial Assault" data-newest-date="2026-10-02" data-default-order="6">Star Wars: Imperial Assault <span class="count">(3)</span></a></li>
+      <li data-game-name="Star Wars: Outer Rim" data-newest-date="2026-10-02" data-default-order="7"><a href="#outer-rim" data-game-name="Star Wars: Outer Rim" data-newest-date="2026-10-02" data-default-order="7">Star Wars: Outer Rim <span class="count">(2)</span></a></li>
+      <li data-game-name="Star Wars: Rebellion" data-newest-date="2026-10-02" data-default-order="8"><a href="#sw-rebellion" data-game-name="Star Wars: Rebellion" data-newest-date="2026-10-02" data-default-order="8">Star Wars: Rebellion <span class="count">(3)</span></a></li>
+      <li data-game-name="The Lord of the Rings: Journeys in Middle-earth" data-newest-date="2026-10-02" data-default-order="9"><a href="#lotr-journeys" data-game-name="The Lord of the Rings: Journeys in Middle-earth" data-newest-date="2026-10-02" data-default-order="9">LOTR: Journeys in Middle-earth <span class="count">(2)</span></a></li>
+      <li data-game-name="Dune Imperium" data-newest-date="2026-09-30" data-default-order="10"><a href="#dune-imperium" data-game-name="Dune Imperium" data-newest-date="2026-09-30" data-default-order="10">Dune Imperium <span class="count">(2)</span></a></li>
+      <li data-game-name="The Lord of the Rings: Duel for Middle-earth" data-newest-date="2026-09-23" data-default-order="11"><a href="#lotr-duel" data-game-name="The Lord of the Rings: Duel for Middle-earth" data-newest-date="2026-09-23" data-default-order="11">LOTR: Duel for Middle-earth <span class="count">(3)</span></a></li>
+      <li data-game-name="DC Legendary" data-newest-date="2026-09-14" data-default-order="12"><a href="#dc-legendary" data-game-name="DC Legendary" data-newest-date="2026-09-14" data-default-order="12">DC Legendary <span class="count">(1)</span></a></li>
+      <li data-game-name="StarCraft Miniatures Game" data-newest-date="2026-09-03" data-default-order="13"><a href="#starcraft-tmg" data-game-name="StarCraft Miniatures Game" data-newest-date="2026-09-03" data-default-order="13">StarCraft Miniatures Game <span class="count">(2)</span></a></li>
+      <li data-game-name="King of Tokyo" data-newest-date="2026-09-01" data-default-order="14"><a href="#king-of-tokyo" data-game-name="King of Tokyo" data-newest-date="2026-09-01" data-default-order="14">King of Tokyo <span class="count">(3)</span></a></li>
+      <li data-game-name="Star Trek Ascendancy: Final Frontier" data-newest-date="2026-08-28" data-default-order="15"><a href="#ascendancy" data-game-name="Star Trek Ascendancy: Final Frontier" data-newest-date="2026-08-28" data-default-order="15">Star Trek Ascendancy: Final Frontier <span class="count">(3)</span></a></li>
+      <li data-game-name="Star Wars: Deckbuilding Game" data-newest-date="2026-07-24" data-default-order="16"><a href="#sw-deckbuilding" data-game-name="Star Wars: Deckbuilding Game" data-newest-date="2026-07-24" data-default-order="16">Star Wars: Deckbuilding Game <span class="count">(3)</span></a></li>
+      <li data-game-name="Marvel Legendary" data-newest-date="2026-07-19" data-default-order="17"><a href="#marvel-legendary" data-game-name="Marvel Legendary" data-newest-date="2026-07-19" data-default-order="17">Marvel Legendary <span class="count">(2)</span></a></li>
     </ul>
   </nav>
 
 
-  <section class="game" id="captains-chair">
+  <section class="game" id="captains-chair" data-game-name="Star Trek: Captain&#x27;s Chair" data-newest-date="2026-10-03" data-default-order="0">
     <h2>Star Trek: Captain's Chair</h2>
     <p class="publisher">Asymmetric deckbuilding · WizKids · David Turczi &amp; Nigel Buckle</p>
 
@@ -342,7 +409,7 @@
     </article>
   </section>
 
-<section class="game" id="blood-rage">
+<section class="game" id="blood-rage" data-game-name="Blood Rage" data-newest-date="2026-10-02" data-default-order="1">
     <h2>Blood Rage</h2>
     <p class="publisher">Area control · Tycoon Games (Godly series; formerly CMON)</p>
 
@@ -383,7 +450,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="lotr-fate">
+<section class="game" id="lotr-fate" data-game-name="The Lord of the Rings: Fate of the Fellowship" data-newest-date="2026-03-18" data-default-order="2">
     <h2>The Lord of the Rings: Fate of the Fellowship</h2>
     <p class="publisher">Z-Man Games / Asmodee · Pandemic System co-op (Matt Leacock)</p>
     <article class="card">
@@ -411,7 +478,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="marvel-champions">
+<section class="game" id="marvel-champions" data-game-name="Marvel Champions" data-newest-date="2026-08-27" data-default-order="3">
     <h2>Marvel Champions</h2>
     <p class="publisher">Living Card Game · Fantasy Flight Games / Asmodee</p>
 
@@ -454,7 +521,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="dice-throne">
+<section class="game" id="dice-throne" data-game-name="Dice Throne" data-newest-date="2026-09-30" data-default-order="4">
     <h2>Dice Throne</h2>
     <p class="publisher">Dice-battling heroes · Roxley / Dice Throne</p>
 
@@ -495,7 +562,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="battlelore">
+<section class="game" id="battlelore" data-game-name="BattleLore" data-newest-date="2026-10-02" data-default-order="5">
     <h2>BattleLore</h2>
     <p class="publisher">Commands &amp; Colors battles · Fantasy Flight Games (DoW rights transferred 2008)</p>
 
@@ -536,7 +603,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="imperial-assault">
+<section class="game" id="imperial-assault" data-game-name="Star Wars: Imperial Assault" data-newest-date="2026-10-02" data-default-order="6">
     <h2>Star Wars: Imperial Assault</h2>
     <p class="publisher">Miniatures / campaign · Fantasy Flight Games / Asmodee</p>
 
@@ -579,7 +646,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="outer-rim">
+<section class="game" id="outer-rim" data-game-name="Star Wars: Outer Rim" data-newest-date="2026-10-02" data-default-order="7">
     <h2>Star Wars: Outer Rim</h2>
     <p class="publisher">Open-world sandbox · Fantasy Flight Games / Asmodee</p>
 
@@ -608,7 +675,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="sw-rebellion">
+<section class="game" id="sw-rebellion" data-game-name="Star Wars: Rebellion" data-newest-date="2026-10-02" data-default-order="8">
     <h2>Star Wars: Rebellion</h2>
     <p class="publisher">Asymmetric strategy · Fantasy Flight Games / Asmodee</p>
 
@@ -649,7 +716,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="lotr-journeys">
+<section class="game" id="lotr-journeys" data-game-name="The Lord of the Rings: Journeys in Middle-earth" data-newest-date="2026-10-02" data-default-order="9">
     <h2>The Lord of the Rings: Journeys in Middle-earth</h2>
     <p class="publisher">App-driven co-op campaign · Fantasy Flight Games / Asmodee</p>
 
@@ -678,7 +745,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="dune-imperium">
+<section class="game" id="dune-imperium" data-game-name="Dune Imperium" data-newest-date="2026-09-30" data-default-order="10">
     <h2>Dune Imperium</h2>
     <p class="publisher">Dire Wolf · Imperium / Uprising / Immortality and related expansions</p>
 
@@ -708,7 +775,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="lotr-duel">
+<section class="game" id="lotr-duel" data-game-name="The Lord of the Rings: Duel for Middle-earth" data-newest-date="2026-09-23" data-default-order="11">
     <h2>The Lord of the Rings: Duel for Middle-earth</h2>
     <p class="publisher">Repos Production / Asmodee · base game + Allies / Allies &amp; Quest</p>
     <article class="card">
@@ -748,7 +815,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="dc-legendary">
+<section class="game" id="dc-legendary" data-game-name="DC Legendary" data-newest-date="2026-09-14" data-default-order="12">
     <h2>DC Legendary</h2>
     <p class="publisher">Legendary: A DC Deck Building Game · Upper Deck</p>
 
@@ -765,7 +832,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="starcraft-tmg">
+<section class="game" id="starcraft-tmg" data-game-name="StarCraft Miniatures Game" data-newest-date="2026-09-03" data-default-order="13">
     <h2>StarCraft Miniatures Game</h2>
     <p class="publisher">StarCraft: Tabletop Miniatures Game · Archon Studio (Blizzard license)</p>
 
@@ -795,7 +862,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="king-of-tokyo">
+<section class="game" id="king-of-tokyo" data-game-name="King of Tokyo" data-newest-date="2026-09-01" data-default-order="14">
     <h2>King of Tokyo</h2>
     <p class="publisher">Dice / family · IELLO</p>
 
@@ -836,7 +903,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="ascendancy">
+<section class="game" id="ascendancy" data-game-name="Star Trek Ascendancy: Final Frontier" data-newest-date="2026-08-28" data-default-order="15">
     <h2>Star Trek Ascendancy: Final Frontier</h2>
     <p class="publisher">Gale Force Nine · Gamefound campaign / all-in collection</p>
 
@@ -879,7 +946,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="sw-deckbuilding">
+<section class="game" id="sw-deckbuilding" data-game-name="Star Wars: Deckbuilding Game" data-newest-date="2026-07-24" data-default-order="16">
     <h2>Star Wars: Deckbuilding Game</h2>
     <p class="publisher">Deckbuilding · Fantasy Flight Games / Asmodee</p>
 
@@ -922,7 +989,7 @@
       </div>
     </article>
   </section>
-<section class="game" id="marvel-legendary">
+<section class="game" id="marvel-legendary" data-game-name="Marvel Legendary" data-newest-date="2026-07-19" data-default-order="17">
     <h2>Marvel Legendary</h2>
     <p class="publisher">Legendary: A Marvel Deck Building Game · Upper Deck</p>
 
@@ -958,5 +1025,78 @@
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var KEY = "tabletop-weekly-sort";
+  var toc = document.querySelector("nav.toc");
+  if (!toc) return;
+  var list = toc.querySelector("ul");
+  var wrap = document.querySelector(".wrap") || document.body;
+  var sections = Array.prototype.slice.call(document.querySelectorAll("section.game"));
+  if (!list || !sections.length) return;
+
+  function modeFromStorage() {
+    try {
+      var v = localStorage.getItem(KEY);
+      if (v === "az" || v === "newest") return v;
+    } catch (e) {}
+    return "newest";
+  }
+
+  function saveMode(mode) {
+    try { localStorage.setItem(KEY, mode); } catch (e) {}
+  }
+
+  function sortKeyName(el) {
+    return (el.getAttribute("data-game-name") || "").toLocaleLowerCase();
+  }
+
+  function sortKeyNewest(el) {
+    var n = parseInt(el.getAttribute("data-default-order") || "0", 10);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function reorder(mode) {
+    var links = Array.prototype.slice.call(list.querySelectorAll(":scope > li"));
+    var cmp;
+    if (mode === "az") {
+      cmp = function (a, b) {
+        var an = sortKeyName(a), bn = sortKeyName(b);
+        if (an < bn) return -1;
+        if (an > bn) return 1;
+        return sortKeyNewest(a) - sortKeyNewest(b);
+      };
+    } else {
+      cmp = function (a, b) { return sortKeyNewest(a) - sortKeyNewest(b); };
+    }
+    sections.slice().sort(cmp).forEach(function (sec) { wrap.appendChild(sec); });
+    var footer = wrap.querySelector("footer");
+    if (footer) wrap.appendChild(footer);
+    links.slice().sort(cmp).forEach(function (li) { list.appendChild(li); });
+    toc.querySelectorAll(".sort-toggle button").forEach(function (btn) {
+      btn.setAttribute("aria-pressed", btn.getAttribute("data-sort") === mode ? "true" : "false");
+    });
+  }
+
+  var buttons = toc.querySelectorAll(".sort-toggle button");
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var mode = btn.getAttribute("data-sort") || "newest";
+      saveMode(mode);
+      reorder(mode);
+    });
+  });
+
+  var initial = modeFromStorage();
+  if (initial !== "newest") reorder(initial);
+  else {
+    toc.querySelectorAll(".sort-toggle button").forEach(function (btn) {
+      btn.setAttribute("aria-pressed", btn.getAttribute("data-sort") === "newest" ? "true" : "false");
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
